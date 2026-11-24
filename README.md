@@ -2,7 +2,7 @@
 
 A local gateway that lets a cloud AI assistant work with your personal files and apps while keeping detected private details on your laptop.
 
-Built for the Make MCP Matter track (Less Magic, More Utility).
+Built for wHACKiest 2026 under Track 1: Make MCP Matter (Less Magic, More Utility).
 
 ## Problem
 
