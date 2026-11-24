@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="676" viewBox="0 0 800 676" role="img" aria-labelledby="title desc">
+  <title id="title">Effects and approvals flow</title>
+  <desc id="desc">Tool and placeholder validation, routing by effect class, and the possible approval outcomes for external or unknown effects.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 8 4 0 8Z" fill="#fff"/>
+    </marker>
+  </defs>
+
+  <g fill="none" stroke="#fff" stroke-linejoin="round">
+    <rect x="20" y="34" width="178" height="56" rx="5"/>
+    <path d="M365 18 465 62 365 106 265 62Z"/>
+    <rect x="566" y="34" width="214" height="56" rx="5"/>
+    <path d="M365 134 480 178 365 222 250 178Z"/>
+    <rect x="566" y="150" width="214" height="56" rx="5"/>
+    <path d="M365 250 461 294 365 338 269 294Z"/>
+    <rect x="20" y="264" width="178" height="60" rx="5"/>
+    <rect x="566" y="264" width="214" height="60" rx="5"/>
+    <rect x="250" y="382" width="230" height="56" rx="5"/>
+    <path d="M365 468 480 512 365 556 250 512Z"/>
+    <rect x="20" y="598" width="224" height="62" rx="5"/>
+    <rect x="282" y="598" width="166" height="62" rx="5"/>
+    <rect x="486" y="598" width="294" height="62" rx="5"/>
+
+    <g marker-end="url(#arrow)">
+      <path d="M198 62H265"/>
+      <path d="M465 62H566"/>
+      <path d="M365 106V134"/>
+      <path d="M480 178H566"/>
+      <path d="M365 222V250"/>
+      <path d="M269 294H198"/>
+      <path d="M461 294H566"/>
+      <path d="M365 338V382"/>
+      <path d="M365 438V468"/>
+      <path d="M307.5 534H132v64"/>
+      <path d="M365 556V598"/>
+      <path d="M422.5 534H633v64"/>
+    </g>
+  </g>
+
+  <g fill="#fff" font-family="'Trebuchet MS', Verdana, Arial, sans-serif" text-anchor="middle">
+    <g font-size="16">
+      <text x="109" y="68">invoke_tool call</text>
+      <text x="365" y="68" font-weight="600">Tool in catalog?</text>
+      <text x="673" y="68">Error: unknown tool</text>
+      <text x="365" y="184" font-weight="600">Unknown placeholder?</text>
+      <text x="673" y="174"><tspan x="673">Error: list valid</tspan><tspan x="673" dy="19">placeholder types</tspan></text>
+      <text x="365" y="300" font-weight="600">Effect class</text>
+      <text x="109" y="290"><tspan x="109">Restore, call,</tspan><tspan x="109" dy="19">cloak result</tspan></text>
+      <text x="673" y="290"><tspan x="673">Restore, call, log,</tspan><tspan x="673" dy="19">cloak result</tspan></text>
+      <text x="365" y="406"><tspan x="365">Build approval card</tspan><tspan x="365" dy="19">with real values</tspan></text>
+      <text x="365" y="518" font-weight="600">Decision within 30 s?</text>
+      <text x="132" y="625"><tspan x="132">Call with approved</tspan><tspan x="132" dy="19">payload, cloak result</tspan></text>
+      <text x="365" y="635">Return denied</text>
+      <text x="633" y="625"><tspan x="633">Return pending_approval</tspan><tspan x="633" dy="19">with an id</tspan></text>
+    </g>
+    <g font-size="15">
+      <text x="515" y="52">no</text>
+      <text x="377" y="124" text-anchor="start">yes</text>
+      <text x="523" y="168">yes</text>
+      <text x="377" y="240" text-anchor="start">no</text>
+      <text x="234" y="284">read</text>
+      <text x="513" y="284">local_write</text>
+      <text x="377" y="363" text-anchor="start">external or unknown</text>
+      <text x="211" y="524">approve</text>
+      <text x="377" y="580" text-anchor="start">deny or expire</text>
+      <text x="555" y="524">no decision yet</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="586" viewBox="0 0 800 586" role="img" aria-labelledby="title desc">
+  <title id="title">Cloak pipeline</title>
+  <desc id="desc">Content filtering, field policy, gazetteer, detectors, vault and tripwire checks before a payload is sent to the host or withheld.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 8 4 0 8Z" fill="#fff"/>
+    </marker>
+  </defs>
+
+  <g fill="none" stroke="#fff" stroke-linejoin="round">
+    <rect x="20" y="34" width="200" height="56" rx="5"/>
+    <path d="M390 20 484 62 390 104 296 62Z"/>
+    <rect x="586" y="34" width="194" height="56" rx="5"/>
+    <rect x="300" y="168" width="180" height="54" rx="5"/>
+    <rect x="20" y="168" width="200" height="54" rx="5"/>
+    <rect x="20" y="272" width="200" height="54" rx="5"/>
+    <rect x="288" y="272" width="204" height="54" rx="5"/>
+    <rect x="550" y="272" width="230" height="54" rx="5"/>
+    <rect x="580" y="386" width="150" height="52" rx="5"/>
+    <path d="M394 369 490 412 394 455 298 412Z"/>
+    <rect x="20" y="514" width="200" height="56" rx="5"/>
+    <rect x="286" y="514" width="216" height="56" rx="5"/>
+    <rect x="566" y="514" width="214" height="56" rx="5"/>
+
+    <g marker-end="url(#arrow)">
+      <path d="M220 62H296"/>
+      <path d="M390 104V168"/>
+      <path d="M484 62H586"/>
+      <path d="M683 90v46H447v32"/>
+      <path d="M300 195H220"/>
+      <path d="M120 222V272"/>
+      <path d="M220 299H288"/>
+      <path d="M492 299H550"/>
+      <path d="M764 326V514"/>
+      <path d="M655 326V386"/>
+      <path d="M580 412H490"/>
+      <path d="M442 433.5h78V479h139v35"/>
+      <path d="M394 455V514"/>
+      <path d="M220 542H286"/>
+    </g>
+  </g>
+
+  <g fill="#fff" font-family="'Trebuchet MS', Verdana, Arial, sans-serif" text-anchor="middle">
+    <g font-size="16">
+      <text x="120" y="58"><tspan x="120">Payload from a</tspan><tspan x="120" dy="19">downstream server</tspan></text>
+      <text x="390" y="68" font-weight="600">Content type</text>
+      <text x="683" y="58"><tspan x="683">Replace block with</tspan><tspan x="683" dy="19">a withheld notice</tspan></text>
+      <text x="390" y="201">Field policy</text>
+      <text x="120" y="201">Gazetteer sweep</text>
+      <text x="120" y="305">Detectors</text>
+      <text x="390" y="295"><tspan x="390">Vault: mint or</tspan><tspan x="390" dy="19">reuse placeholders</tspan></text>
+      <text x="665" y="295"><tspan x="665">Tripwire: rescan for</tspan><tspan x="665" dy="19">known real values</tspan></text>
+      <text x="655" y="418">Re-cloak once</text>
+      <text x="394" y="418" font-weight="600">Still a hit?</text>
+      <text x="120" y="548">Any stage raises an error</text>
+      <text x="394" y="548">Withhold the whole payload</text>
+      <text x="673" y="548">Send to host</text>
+    </g>
+    <g font-size="15">
+      <text x="377" y="140" text-anchor="end">text or JSON</text>
+      <text x="525" y="49">image or binary</text>
+      <text x="752" y="464" text-anchor="end">clean</text>
+      <text x="666" y="358" text-anchor="start">hit</text>
+      <text x="586" y="469">no</text>
+      <text x="406" y="488" text-anchor="start">yes</text>
+    </g>
+  </g>
+</svg>

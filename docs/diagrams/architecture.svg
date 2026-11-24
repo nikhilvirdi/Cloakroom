@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="665" viewBox="0 0 800 665" role="img" aria-labelledby="title desc">
+  <title id="title">Cloakroom system architecture</title>
+  <desc id="desc">The host connects the cloud model to the local Cloakroom gateway over MCP. Tool calls pass through policy and the client pool, and results go back through the cloak pipeline. Vault operations stay local. The user approves actions through the separate loopback Control Room, which also receives events from the gateway.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 8 4 0 8Z" fill="#fff"/>
+    </marker>
+  </defs>
+
+  <g fill="none" stroke="#fff" stroke-linejoin="round">
+    <rect x="48" y="18" width="196" height="60" rx="5"/>
+    <rect x="296" y="18" width="208" height="60" rx="5"/>
+    <rect x="556" y="18" width="208" height="60" rx="5"/>
+    <rect x="14" y="139" width="772" height="386" rx="7"/>
+    <rect x="48" y="182" width="196" height="66" rx="5"/>
+    <rect x="296" y="182" width="208" height="66" rx="5"/>
+    <rect x="556" y="182" width="208" height="66" rx="5"/>
+    <rect x="48" y="298" width="196" height="78" rx="5"/>
+    <rect x="296" y="298" width="208" height="78" rx="5"/>
+    <rect x="556" y="298" width="208" height="78" rx="5"/>
+    <rect x="48" y="420" width="196" height="64" rx="5"/>
+    <rect x="296" y="420" width="208" height="64" rx="5"/>
+    <rect x="556" y="420" width="208" height="64" rx="5"/>
+    <rect x="177" y="582" width="446" height="64" rx="5"/>
+
+    <g marker-end="url(#arrow)">
+      <g marker-start="url(#arrow)">
+        <path d="M244 48H296"/>
+        <path d="M400 78V182"/>
+        <path d="M660 78V182"/>
+        <path d="M504 322h26V215h26"/>
+        <path d="M400 484V582"/>
+      </g>
+      <path d="M296 215H244"/>
+      <path d="M102 248V298"/>
+      <path d="M400 248V298"/>
+      <path d="M296 322H244"/>
+      <path d="M400 376V420"/>
+      <path d="M296 456h-26v49H30V336h18"/>
+      <path d="M198 298v-24h144v-26"/>
+      <path d="M146 376V420"/>
+      <path d="M296 352h-34v89h-18"/>
+      <path d="M660 298V248" stroke-dasharray="5 4"/>
+      <path d="M660 376V420" stroke-dasharray="5 4"/>
+    </g>
+  </g>
+
+  <g fill="#fff" font-family="'Trebuchet MS', Verdana, Arial, sans-serif" text-anchor="middle">
+    <g font-size="17" font-weight="600">
+      <text x="146" y="43">Cloud model</text>
+      <text x="400" y="43">Host</text>
+      <text x="660" y="43">User</text>
+      <text x="34" y="165" text-anchor="start">Cloakroom gateway</text>
+      <text x="146" y="201">Discovery</text>
+      <text x="400" y="211">Front</text>
+      <text x="660" y="201">Control Room</text>
+      <text x="146" y="317">Cloak pipeline</text>
+      <text x="400" y="322">Policy engine</text>
+      <text x="660" y="332">Event bus</text>
+      <text x="146" y="439">Vault</text>
+      <text x="400" y="447">Client pool</text>
+      <text x="660" y="447">Audit log</text>
+      <text x="400" y="609">Downstream servers</text>
+    </g>
+    <g font-size="15">
+      <text x="146" y="63">Sees placeholders only</text>
+      <text x="400" y="63">Starts the gateway</text>
+      <text x="660" y="63">Approves or denies</text>
+      <text x="638" y="165" text-anchor="end">On the user's machine</text>
+      <text x="146" y="220"><tspan x="146">Catalog, hybrid retrieval,</tspan><tspan x="146" dy="18">tool cards</tspan></text>
+      <text x="400" y="232">Three MCP meta-tools</text>
+      <text x="660" y="220"><tspan x="660">Live view, approvals, settings</tspan><tspan x="660" dy="18">Loopback, per-launch token</tspan></text>
+      <text x="146" y="334"><tspan x="146">Content filter, field policy</tspan><tspan x="146" dy="16">Gazetteer and detectors</tspan><tspan x="146" dy="16">Tripwire</tspan></text>
+      <text x="400" y="342"><tspan x="400">Effect classes, restoration,</tspan><tspan x="400" dy="18">approval decisions</tspan></text>
+      <text x="660" y="353">Events for every step</text>
+      <text x="146" y="458"><tspan x="146">Placeholder mapping</tspan><tspan x="146" dy="18">Encryption, wipe, rotate</tspan></text>
+      <text x="400" y="468">MCP clients, server lifecycle</text>
+      <text x="660" y="468">Cloaked payloads and timings</text>
+      <text x="400" y="630">Files, documents, bank, contacts, notes, mail drafts</text>
+      <text x="413" y="113" text-anchor="start">MCP over stdio</text>
+      <text x="673" y="113" text-anchor="start">Local browser</text>
+      <text x="518" y="284" text-anchor="end">Approvals</text>
+      <text x="152" y="498">Raw results</text>
+      <text x="413" y="558" text-anchor="start">MCP</text>
+    </g>
+  </g>
+</svg>

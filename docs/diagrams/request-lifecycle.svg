@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="624" viewBox="0 0 800 624" role="img" aria-labelledby="title desc">
+  <title id="title">Request lifecycle</title>
+  <desc id="desc">A sequence showing tool discovery, a read with cloaked results, and an outward action with a Control Room approval.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 8 4 0 8Z" fill="#fff"/>
+    </marker>
+  </defs>
+
+  <g fill="none" stroke="#fff" stroke-linejoin="round">
+    <rect x="78" y="14" width="140" height="54" rx="5"/>
+    <rect x="351" y="14" width="124" height="54" rx="5"/>
+    <rect x="533" y="14" width="150" height="54" rx="5"/>
+    <rect x="689" y="14" width="106" height="54" rx="5"/>
+    <circle cx="42" cy="23" r="7"/>
+    <path d="M42 30v11m-9-6h18m-16 12 7-6 7 6"/>
+    <path d="M42 68V608 M148 68V468m0 12V608 M413 68V468m0 12V608 M608 68V409m0 32V468m0 12V608 M742 68V608"/>
+
+    <g marker-end="url(#arrow)">
+      <path d="M148 106H410"/>
+      <path d="M413 145H151" stroke-dasharray="5 4"/>
+      <path d="M148 184H410"/>
+      <path d="M413 223H605"/>
+      <path d="M608 262H416" stroke-dasharray="5 4"/>
+      <path d="M413 301h68v20H416"/>
+      <path d="M413 357H151" stroke-dasharray="5 4"/>
+      <path d="M148 396H410"/>
+      <path d="M413 435H739"/>
+      <path d="M42 474H739"/>
+      <path d="M413 513H605"/>
+      <path d="M608 552H416" stroke-dasharray="5 4"/>
+      <path d="M413 591H151" stroke-dasharray="5 4"/>
+    </g>
+  </g>
+
+  <g fill="#fff" font-family="'Trebuchet MS', Verdana, Arial, sans-serif" text-anchor="middle">
+    <g font-size="15" font-weight="600">
+      <text x="42" y="64">User</text>
+      <text x="148" y="38"><tspan x="148">Host and</tspan><tspan x="148" dy="18">cloud model</tspan></text>
+      <text x="413" y="46">Cloakroom</text>
+      <text x="608" y="46">Downstream servers</text>
+      <text x="742" y="46">Control Room</text>
+    </g>
+    <g font-size="15">
+      <text x="280" y="97">discover_tools(query)</text>
+      <text x="280" y="136">about six tool cards</text>
+      <text x="280" y="175">invoke_tool(read tool, arguments)</text>
+      <text x="510" y="214">call with restored values</text>
+      <text x="510" y="253">raw result</text>
+      <text x="424" y="292" text-anchor="start">cloak and run tripwire</text>
+      <text x="280" y="348">result with placeholders</text>
+      <text x="280" y="387">invoke_tool(external tool, arguments)</text>
+      <text x="431" y="426" text-anchor="start">approval card with real values</text>
+      <text x="280" y="465">approve or deny</text>
+      <text x="510" y="504">call with approved payload</text>
+      <text x="510" y="543">raw result</text>
+      <text x="280" y="582">cloaked result or denial</text>
+    </g>
+  </g>
+</svg>
