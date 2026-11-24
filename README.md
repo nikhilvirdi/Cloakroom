@@ -274,13 +274,29 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the detailed component desi
 
 ## Quick start
 
-The commands below describe the designed interface. They will be confirmed when the first implementation is released.
-
-Install from a checkout of this repository:
+With Python 3.11 or later and [uv](https://docs.astral.sh/uv/) installed, run these commands from a checkout:
 
 ```bash
-pip install -e .
+uv sync --locked
+uv run cloakroom --help
+uv run cloakroom --version
 ```
+
+`uv run python -m cloakroom` opens the same CLI. Use `uv run cloakroom check-config` to validate the defaults or pass `--config-dir` to validate a private configuration directory. See [configuration loading](docs/CONFIGURATION.md#configuration-loading) for the filenames and precedence rules.
+
+To run the development checks:
+
+```bash
+uv run ruff check .
+uv run ruff format --check .
+uv run mypy src
+uv run pytest
+uv build
+```
+
+### Planned gateway commands
+
+The examples below describe the planned host setup and gateway commands.
 
 Import the servers already configured in Claude Desktop:
 

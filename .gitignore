@@ -1,0 +1,46 @@
+# Python environments, caches and build output
+.venv/
+.venv-*/
+.uv-cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+servers.yaml
+privacy_policy.yaml
+gazetteer.yaml
+/config/*
+!/config/*.example.yaml
+secrets/
+credentials/
+*.key
+*.pem
+*.pfx
+*.p12
+*.vcf
+
+# Local state, logs and data
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.log
+logs/
+runtime/
+/data/*
+!/data/synthetic/

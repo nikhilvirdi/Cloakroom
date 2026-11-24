@@ -1,0 +1,10 @@
+# Synthetic examples. Keep real entries in a private configuration directory.
+self:
+  names: ["Demo Person", "D. Person"]
+  addresses: ["42 Example Lane, Fictional District"]
+  employer: "Example Paperwork Ltd"
+contacts:
+  source: contacts.vcf
+extra:
+  - value: "Example Hospital"
+    entity: ORG

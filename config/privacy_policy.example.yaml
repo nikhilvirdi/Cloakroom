@@ -1,0 +1,9 @@
+tiers:
+  identifiers: mask
+  contextual: mask
+  analytical: pass
+detectors:
+  custom:
+    - name: hospital_record
+      entity: MED_ID
+      pattern: '[A-Z]{2}-\d{5}'

@@ -4,7 +4,7 @@
 
 Cloakroom keeps the gateway configuration on the user's machine. The configuration determines which MCP servers it connects to, which values it masks and which actions require approval.
 
-The examples below describe the intended configuration format. The final file locations, validation rules and command behaviour need to be confirmed against the implementation. All personal details in the examples are synthetic.
+The configuration foundation validates the documented YAML examples. The examples also describe how the gateway will use the settings when its subsystems are implemented. All personal details in the examples are synthetic.
 
 ## Configuration files
 
@@ -15,6 +15,14 @@ The examples below describe the intended configuration format. The final file lo
 | `gazetteer.yaml` | Personal values, aliases, contacts and additional private entities |
 
 Example configuration files may be distributed with the project. The user's actual configuration, contacts and private documents must not be committed to the repository.
+
+## Configuration loading
+
+`uv run cloakroom check-config` validates configuration and exits with a nonzero status on error. To check a specific directory, run `uv run cloakroom check-config --config-dir path/to/private-config`. Copy the three examples from `config/` into a private directory and remove `.example` from each copy's filename before validation.
+
+The loader uses explicit CLI or Python arguments first, then the process environment, then defaults. A selected directory must contain all three unsuffixed YAML files. Relative directory paths are evaluated from the working directory, and `~` expands to the user's home directory. With no directory selected, the loader uses an empty server catalog and gazetteer. Identifiers and contextual values default to `mask` and analytical values to `pass`.
+
+Only the selected directory is read. The loader does not search the working directory or home directory, load `.env` automatically, follow contact sources, start server commands or apply privacy rules. YAML uses safe tags and unique keys. Unknown fields and invalid values are rejected. Diagnostics identify the configuration file and failure category without including private paths or input values.
 
 ## Downstream servers
 
@@ -185,7 +193,12 @@ The intended controls include privacy tiers, gazetteer sources, effect overrides
 
 ## Environment variables and secrets
 
-No public environment variable names or precedence rules have been finalised. The implementation should document them once they exist rather than introduce names that the gateway does not recognise.
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `CLOAKROOM_CONFIG_DIR` | Unset | Directory containing the three YAML files |
+| `CLOAKROOM_LOG_LEVEL` | `WARNING` | Minimum application log level. Supports `DEBUG`, `INFO`, `WARNING`, `ERROR` and `CRITICAL` |
+
+Set these variables in the process environment. `.env.example` lists the supported names with non-sensitive example values. Application logging writes structured diagnostics to stderr.
 
 The configuration and secret-handling requirements are:
 
@@ -195,5 +208,3 @@ The configuration and secret-handling requirements are:
 - Pass downstream credentials only where the configured server requires them.
 - Keep private configuration, vault files and local data exports out of version control.
 - Reject invalid configuration without silently weakening privacy or approval rules.
-
-The exact configuration search paths, environment overrides, schema validation and reload behaviour remain implementation decisions.
