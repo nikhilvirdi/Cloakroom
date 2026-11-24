@@ -93,6 +93,8 @@ An external or unknown tool is subject to an approval decision before its restor
 
 ## Tool discovery
 
+![Tool discovery indexing and retrieval](diagrams/tool-discovery.svg)
+
 ### Indexing
 
 At startup the gateway connects to each configured server as an MCP client, lists its tools and builds a catalog in memory. Each entry holds the tool name, description, parameter schema, effect class and an embedding of its text.
@@ -136,6 +138,8 @@ Configured fields, known values and pattern-based detectors cover different part
 The privacy tiers and detector configuration are described in [CONFIGURATION.md](CONFIGURATION.md).
 
 ## Vault
+
+![Cloakroom vault lifecycle](diagrams/vault-lifecycle.svg)
 
 The vault maps real values to placeholders. Placeholders are typed (`PERSON`, `ORG`, `EMAIL`, `PHONE`, `ACCT`, `GOVID`, `MED_ID`, `ADDR`, `SECRET`) and numbered per type.
 

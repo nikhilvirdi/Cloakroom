@@ -22,6 +22,8 @@ Cloakroom is not an anonymity system and does not provide a regulatory complianc
 
 ## Trust boundaries
 
+![Cloakroom trust boundaries and security data flows](diagrams/trust-boundaries.svg)
+
 | Zone | Trust assumption |
 | --- | --- |
 | Cloud model and host-facing traffic | Untrusted with private values. Receives cloaked payloads and data allowed by policy. |

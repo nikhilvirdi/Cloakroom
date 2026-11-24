@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="913" viewBox="0 0 800 913" role="img" aria-labelledby="title desc">
+  <title id="title">Cloakroom deferred approval lifecycle</title>
+  <desc id="desc">An external or unknown-effect invocation creates an approval request bound to the hash of the exact payload shown in the Control Room. Only the user can decide there. If approved within the initial wait of about 30 seconds, the gateway executes the approved payload and returns the cloaked result. If denied or expired during the wait, it returns a denial without executing. If the wait ends with the approval still pending, invoke_tool returns pending_approval with an approval ID. The request remains open until the user approves, denies, or the separate approval deadline expires. After deferred approval the gateway runs the call and retains the cloaked result. Denial and expiry leave the tool unexecuted. A downstream timeout or crash produces a cloaked error and writes are not retried. The host can read approval status and any available result with inspect_status(approval_id), which cannot approve or execute a tool.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0 8 4 0 8Z" fill="#fff"/>
+    </marker>
+  </defs>
+
+  <g fill="none" stroke="#fff" stroke-linejoin="round">
+    <rect x="14" y="14" width="772" height="396" rx="7"/>
+    <rect x="14" y="440" width="772" height="459" rx="7"/>
+
+    <!-- Initial call and outcomes -->
+    <rect x="36" y="60" width="216" height="74" rx="5"/>
+    <rect x="278" y="60" width="244" height="74" rx="5"/>
+    <rect x="550" y="60" width="214" height="74" rx="5"/>
+    <path d="M400 171 511 218 400 265 289 218Z"/>
+    <rect x="36" y="315" width="216" height="74" rx="5"/>
+    <rect x="278" y="315" width="244" height="74" rx="5"/>
+    <rect x="550" y="315" width="214" height="74" rx="5"/>
+
+    <!-- Deferred outcomes and host status lookup -->
+    <rect x="278" y="489" width="244" height="63" rx="5"/>
+    <rect x="36" y="627" width="216" height="86" rx="5"/>
+    <rect x="278" y="627" width="244" height="86" rx="5"/>
+    <rect x="550" y="627" width="214" height="86" rx="5"/>
+    <rect x="36" y="789" width="264" height="88" rx="5"/>
+    <rect x="356" y="789" width="408" height="88" rx="5"/>
+
+    <g marker-end="url(#arrow)">
+      <path d="M252 97H278"/>
+      <path d="M522 97H550"/>
+      <path d="M657 134v21H400v16"/>
+      <path d="M289 218H144v97"/>
+      <path d="M400 265v50"/>
+      <path d="M511 218H657v97"/>
+
+      <path d="M400 389V489"/>
+      <path d="M342 552v43H144v32"/>
+      <path d="M400 552v75"/>
+      <path d="M458 552v43H657v32"/>
+
+      <path d="M36 352H25v481h11" stroke-dasharray="5 4"/>
+      <path d="M91 713v76" stroke-dasharray="5 4"/>
+      <path d="M560 757v32" stroke-dasharray="5 4"/>
+    </g>
+    <path d="M180 713v44h477v-44 M400 713v44" stroke-dasharray="5 4"/>
+  </g>
+
+  <g fill="#fff" font-family="'Trebuchet MS', Verdana, Arial, sans-serif" text-anchor="middle">
+    <g font-size="17" font-weight="600">
+      <text x="34" y="41" text-anchor="start">Initial response window</text>
+      <text x="144" y="93">invoke_tool</text>
+      <text x="400" y="93">Create approval request</text>
+      <text x="657" y="84">Control Room</text>
+      <text x="400" y="214">Initial wait</text>
+      <text x="144" y="337">Approved</text>
+      <text x="400" y="347">pending_approval</text>
+      <text x="657" y="337">Denied</text>
+
+      <text x="34" y="467" text-anchor="start">Deferred approval</text>
+      <text x="400" y="517">Pending approval</text>
+      <text x="144" y="652">Approved</text>
+      <text x="400" y="652">Denied</text>
+      <text x="657" y="652">Expired</text>
+      <text x="168" y="811">Downstream failure</text>
+      <text x="560" y="817">inspect_status(approval_id)</text>
+    </g>
+    <g font-size="15">
+      <text x="144" y="113">External or unknown effect</text>
+      <text x="400" y="113">Bind to exact payload hash</text>
+      <text x="657" y="105"><tspan x="657">Show local approval card</tspan><tspan x="657" dy="18">Only decision channel</tspan></text>
+      <text x="400" y="233">About 30 seconds</text>
+      <text x="218" y="208">User approves</text>
+      <text x="414" y="293" text-anchor="start">Wait ends with no decision</text>
+      <text x="583" y="208">User denial or expiry</text>
+      <text x="144" y="358"><tspan x="144">Execute approved payload</tspan><tspan x="144" dy="18">Return cloaked result</tspan></text>
+      <text x="400" y="368">Return approval_id to host</text>
+      <text x="657" y="358"><tspan x="657">Return denial</tspan><tspan x="657" dy="18">No downstream call</tspan></text>
+
+      <text x="764" y="467" text-anchor="end">Expiry has a separate deadline</text>
+      <text x="400" y="538">Until decision or expiry</text>
+      <text x="224" y="585">User approves</text>
+      <text x="414" y="615" text-anchor="start">User denies</text>
+      <text x="569" y="585">Expiry reached</text>
+      <text x="144" y="674"><tspan x="144">Gateway executes payload</tspan><tspan x="144" dy="18">Retain cloaked result</tspan></text>
+      <text x="400" y="674"><tspan x="400">Report denial</tspan><tspan x="400" dy="18">No downstream call</tspan></text>
+      <text x="657" y="674"><tspan x="657">Treat as denial</tspan><tspan x="657" dy="18">No downstream call</tspan></text>
+      <text x="168" y="831"><tspan x="168">Timeout or crash</tspan><tspan x="168" dy="18">Report a cloaked error</tspan><tspan x="168" dy="18">No write retries</tspan></text>
+      <text x="560" y="839"><tspan x="560">Read-only for host, including while pending</tspan><tspan x="560" dy="18">Approval status and any available cloaked result</tspan></text>
+    </g>
+  </g>
+</svg>

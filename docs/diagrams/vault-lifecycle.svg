@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="884" viewBox="0 0 800 884" role="img" aria-labelledby="title desc">
+  <title id="title">Cloakroom vault lifecycle</title>
+  <desc id="desc">The cloak pipeline identifies a sensitive value and its entity type. Cloakroom canonicalises the value, resolves configured aliases and uses an HMAC-SHA256 keyed hash to look up a mapping. It reuses a stable placeholder when one exists. For a new entity it allocates a typed placeholder, encrypts the original value with AES-256-GCM and persists the mapping in SQLite before returning the placeholder. When invoke_tool receives a placeholder, Cloakroom validates it and checks the effect class and restoration policy. The Control Room may resolve real values locally for an approval preview. Forwarding waits for human approval when required. Cloakroom looks up the mapping by placeholder, decrypts locally and restores the original value in downstream tool arguments. The OS keychain supplies the AES key. The user can wipe the vault or rotate placeholder numbering.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 8 4 0 8Z" fill="#fff"/>
+    </marker>
+  </defs>
+
+  <g fill="none" stroke="#fff" stroke-linejoin="round">
+    <rect x="14" y="14" width="772" height="351" rx="7"/>
+    <rect x="14" y="528" width="772" height="342" rx="7"/>
+
+    <!-- Placeholder creation and reuse -->
+    <rect x="36" y="60" width="206" height="60" rx="5"/>
+    <rect x="292" y="60" width="216" height="60" rx="5"/>
+    <rect x="558" y="60" width="206" height="60" rx="5"/>
+    <rect x="558" y="164" width="206" height="64" rx="5"/>
+    <path d="M400 154 506 196 400 238 294 196Z"/>
+    <rect x="36" y="164" width="206" height="64" rx="5"/>
+    <rect x="292" y="279" width="216" height="63" rx="5"/>
+    <rect x="558" y="279" width="206" height="63" rx="5"/>
+    <rect x="36" y="279" width="206" height="63" rx="5"/>
+
+    <!-- Shared vault and supporting components -->
+    <rect x="36" y="410" width="206" height="70" rx="5"/>
+    <rect x="292" y="410" width="216" height="70" rx="5"/>
+    <rect x="558" y="410" width="206" height="70" rx="5"/>
+
+    <!-- Controlled restoration -->
+    <rect x="558" y="571" width="206" height="60" rx="5"/>
+    <rect x="292" y="571" width="216" height="60" rx="5"/>
+    <rect x="36" y="571" width="206" height="60" rx="5"/>
+    <rect x="36" y="681" width="206" height="68" rx="5"/>
+    <rect x="292" y="681" width="216" height="68" rx="5"/>
+    <rect x="558" y="681" width="206" height="68" rx="5"/>
+    <rect x="508" y="790" width="256" height="60" rx="5"/>
+
+    <g marker-end="url(#arrow)">
+      <path d="M242 90H292"/>
+      <path d="M508 90H558"/>
+      <path d="M661 120V164"/>
+      <path d="M558 196H506"/>
+      <path d="M294 196H242"/>
+      <path d="M400 238V279"/>
+      <path d="M508 311H558"/>
+      <path d="M139 228V279"/>
+      <path d="M661 342V410"/>
+      <path d="M585 410v-31H139v-37"/>
+
+      <path d="M764 196h11v249h-11" marker-start="url(#arrow)" stroke-dasharray="5 4"/>
+      <path d="M508 445H558" stroke-dasharray="5 4"/>
+      <path d="M139 480v22H610v-22" stroke-dasharray="5 4"/>
+
+      <path d="M558 601H508"/>
+      <path d="M292 601H242"/>
+      <path d="M139 631V681"/>
+      <path d="M242 715H292"/>
+      <path d="M704 480v27h71v151H400v23" stroke-dasharray="5 4"/>
+      <path d="M508 715H558"/>
+      <path d="M636 749V790"/>
+    </g>
+  </g>
+
+  <g fill="#fff" font-family="'Trebuchet MS', Verdana, Arial, sans-serif" text-anchor="middle">
+    <g font-size="17" font-weight="600">
+      <text x="34" y="41" text-anchor="start">Placeholder creation and reuse</text>
+      <text x="139" y="86">Cloak pipeline</text>
+      <text x="400" y="96">Identify entity type</text>
+      <text x="661" y="86">Canonicalise value</text>
+      <text x="661" y="192">HMAC-SHA256</text>
+      <text x="400" y="202">Mapping exists?</text>
+      <text x="139" y="192">Reuse placeholder</text>
+      <text x="400" y="307">Allocate placeholder</text>
+      <text x="661" y="307">Encrypt value</text>
+      <text x="139" y="307">Return placeholder</text>
+
+      <text x="139" y="432">User controls</text>
+      <text x="400" y="440">OS keychain</text>
+      <text x="661" y="440">Encrypted vault</text>
+
+      <text x="34" y="555" text-anchor="start">Controlled restoration</text>
+      <text x="661" y="597">invoke_tool</text>
+      <text x="400" y="597">Validate placeholder</text>
+      <text x="139" y="597">Policy checks</text>
+      <text x="139" y="703">Human approval</text>
+      <text x="400" y="711">Vault lookup</text>
+      <text x="661" y="711">Decrypt locally</text>
+      <text x="636" y="816">Restore original value</text>
+    </g>
+    <g font-size="15">
+      <text x="139" y="106">Identifies sensitive value</text>
+      <text x="661" y="106">Apply configured aliases</text>
+      <text x="661" y="212">Lookup by keyed hash</text>
+      <text x="139" y="212">Stable [TYPE_N]</text>
+      <text x="400" y="327">Typed [TYPE_N]</text>
+      <text x="661" y="327">AES-256-GCM</text>
+      <text x="139" y="327">To the cloak pipeline</text>
+      <text x="266" y="186">yes</text>
+      <text x="413" y="260" text-anchor="start">no</text>
+      <text x="673" y="389" text-anchor="start">Persist</text>
+
+      <text x="139" y="452"><tspan x="139">Wipe mappings</tspan><tspan x="139" dy="18">Rotate numbering</tspan></text>
+      <text x="400" y="460">AES-256-GCM key</text>
+      <text x="661" y="460">Persistent SQLite store</text>
+
+      <text x="661" y="617">Placeholder in arguments</text>
+      <text x="400" y="617">Reject unknown tokens</text>
+      <text x="139" y="617">Effect class and rules</text>
+      <text x="139" y="722"><tspan x="139">Control Room, if required</tspan><tspan x="139" dy="18">Local preview of values</tspan></text>
+      <text x="400" y="731">Lookup by placeholder</text>
+      <text x="661" y="731">AES-256-GCM</text>
+      <text x="636" y="836">Downstream tool arguments</text>
+      <text x="584" y="648">Encrypted mapping</text>
+    </g>
+  </g>
+</svg>

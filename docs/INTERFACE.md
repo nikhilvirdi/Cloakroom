@@ -223,6 +223,8 @@ The approval card is intended for the local dashboard. It must not be returned r
 
 Hosts may time out long calls, so `invoke_tool` waits about 30 seconds for a decision and then returns `pending_approval` with an identifier if no decision has arrived. The wait is separate from the approval's expiry. After the user approves, the gateway runs the call itself and keeps the cloaked result. The assistant retrieves it with `inspect_status(approval_id)`.
 
+![Cloakroom deferred approval lifecycle](diagrams/deferred-approval.svg)
+
 | Condition | Behaviour |
 | --- | --- |
 | Approval granted during the initial wait | Execute the approved payload and return the cloaked result |

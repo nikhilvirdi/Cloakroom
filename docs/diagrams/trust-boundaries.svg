@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1132" viewBox="0 0 800 1132" role="img" aria-labelledby="title desc">
+  <title id="title">Cloakroom trust boundaries and security data flows</title>
+  <desc id="desc">The cloud-facing zone groups the local assistant host with the cloud model and provider infrastructure for trust purposes. Raw downstream results and errors, and tool descriptions from discovery, go through the cloak pipeline and tripwire before they reach the host. Detected private values are masked. A stage error or a tripwire hit after re-cloaking withholds the payload. Model tool calls enter through the MCP front over stdio. The policy engine validates placeholders, classifies effects and requires out-of-band approval for external or unknown effects. The Control Room shows the real payload locally and the user's decision binds to the exact payload. The assistant's MCP interface cannot approve a request. Permitted calls restore values from the encrypted vault locally and forward the restored arguments. A document or email may still steer the assistant into requesting an external action. An unsafe approval or incorrect effect classification can allow disclosure. Direct chat text, malicious downstream servers and compromise of the local machine are outside the gateway's scope. Missed values and identifying context can still reach the host.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 8 4 0 8Z" fill="#fff"/>
+    </marker>
+  </defs>
+
+  <g fill="none" stroke="#fff" stroke-linejoin="round">
+    <!-- Trust boundaries -->
+    <rect x="14" y="14" width="506" height="150" rx="7" stroke-dasharray="5 4"/>
+    <rect x="543" y="14" width="243" height="150" rx="7"/>
+    <rect x="14" y="236" width="772" height="402" rx="7"/>
+    <rect x="14" y="716" width="772" height="120" rx="7" stroke-dasharray="5 4"/>
+
+    <!-- Cloud-facing and user channels -->
+    <rect x="36" y="62" width="206" height="82" rx="5"/>
+    <rect x="292" y="62" width="206" height="82" rx="5"/>
+    <rect x="565" y="62" width="199" height="82" rx="5"/>
+
+    <!-- Local enforcement and downstream components -->
+    <rect x="48" y="282" width="190" height="67" rx="5"/>
+    <rect x="292" y="282" width="216" height="67" rx="5"/>
+    <rect x="552" y="273" width="212" height="109" rx="5"/>
+    <rect x="48" y="438" width="190" height="61" rx="5"/>
+    <rect x="292" y="438" width="216" height="61" rx="5"/>
+    <rect x="552" y="438" width="212" height="61" rx="5"/>
+    <rect x="48" y="554" width="190" height="63" rx="5"/>
+    <rect x="292" y="554" width="216" height="63" rx="5"/>
+    <rect x="36" y="763" width="208" height="51" rx="5"/>
+    <rect x="294" y="763" width="470" height="51" rx="5"/>
+
+    <g marker-end="url(#arrow)">
+      <path d="M242 103H292" marker-start="url(#arrow)"/>
+      <path d="M435 144V282"/>
+      <path d="M362 282V144"/>
+      <path d="M614 273V144"/>
+      <path d="M729 144V273"/>
+      <path d="M508 316H552"/>
+      <path d="M400 349V438"/>
+      <path d="M292 469H238"/>
+      <path d="M143 438V349"/>
+      <path d="M238 316H292"/>
+      <path d="M48 316H28v269h20"/>
+      <path d="M143 499V554"/>
+      <path d="M658 382V438"/>
+      <path d="M508 585h21V478h23"/>
+      <path d="M659 499V763"/>
+      <path d="M335 763v-88h-72V485h-25"/>
+      <path d="M244 789H294" marker-start="url(#arrow)"/>
+    </g>
+
+    <!-- Potential attack path and documented limits -->
+    <rect x="14" y="857" width="772" height="131" rx="7"/>
+    <rect x="36" y="901" width="164" height="68" rx="5"/>
+    <rect x="224" y="901" width="164" height="68" rx="5"/>
+    <rect x="412" y="901" width="164" height="68" rx="5"/>
+    <rect x="600" y="901" width="164" height="68" rx="5"/>
+    <g marker-end="url(#arrow)">
+      <path d="M437 876h24"/>
+      <path d="M600 876h24" stroke-dasharray="5 4"/>
+      <path d="M200 935h24" stroke-dasharray="5 4"/>
+      <path d="M388 935h24" stroke-dasharray="5 4"/>
+      <path d="M576 935h24" stroke-dasharray="5 4"/>
+    </g>
+    <rect x="14" y="1008" width="449" height="110" rx="5"/>
+    <rect x="485" y="1008" width="301" height="110" rx="5"/>
+  </g>
+
+  <g fill="#fff" font-family="'Trebuchet MS', Verdana, Arial, sans-serif" text-anchor="middle">
+    <g font-size="17" font-weight="600">
+      <text x="34" y="40" text-anchor="start">Cloud-facing zone</text>
+      <text x="562" y="40" text-anchor="start">Local user channel</text>
+      <text x="139" y="100">Cloud model</text>
+      <text x="395" y="100">Assistant host</text>
+      <text x="665" y="80">Control Room</text>
+
+      <text x="34" y="266" text-anchor="start">Trusted local gateway</text>
+      <text x="143" y="311">Tripwire</text>
+      <text x="400" y="301">MCP front</text>
+      <text x="658" y="294">Policy engine</text>
+      <text x="143" y="464">Cloak pipeline</text>
+      <text x="400" y="464">Discovery</text>
+      <text x="658" y="464">Restore locally</text>
+      <text x="143" y="591">Withhold payload</text>
+      <text x="400" y="581">Encrypted vault</text>
+
+      <text x="34" y="743" text-anchor="start">Downstream zone</text>
+      <text x="140" y="784">Data sources</text>
+      <text x="529" y="784">User-installed MCP servers</text>
+
+      <text x="34" y="882" text-anchor="start">Potential prompt-injection path</text>
+      <text x="118" y="931">Untrusted text</text>
+      <text x="306" y="931">Model request</text>
+      <text x="494" y="922">Policy gate</text>
+      <text x="682" y="922">Exfiltration risk</text>
+      <text x="34" y="1035" text-anchor="start">Outside the gateway's scope</text>
+      <text x="505" y="1035" text-anchor="start">Residual privacy risk</text>
+    </g>
+    <g font-size="15">
+      <text x="498" y="40" text-anchor="end">Untrusted with private values</text>
+      <text x="139" y="121">Provider infrastructure</text>
+      <text x="395" y="121">Local chat application</text>
+      <text x="665" y="102"><tspan x="665">Loopback</tspan><tspan x="665" dy="18">Per-launch token</tspan><tspan x="665" dy="18">User approves or denies</tspan></text>
+      <text x="348" y="193" text-anchor="end"><tspan x="348">Cloaked results, errors</tspan><tspan x="348" dy="18">and tool descriptions</tspan></text>
+      <text x="448" y="204" text-anchor="start">Model tool calls</text>
+      <text x="625" y="194" text-anchor="start">Review card</text>
+      <text x="718" y="218" text-anchor="end">User decision</text>
+
+      <text x="143" y="331">Scan known values</text>
+      <text x="400" y="321"><tspan x="400">MCP over stdio</tspan><tspan x="400" dy="18">No approval via MCP</tspan></text>
+      <text x="658" y="314">
+        <tspan x="658">Validate placeholders</tspan>
+        <tspan x="658" dy="18">Classify tool effects</tspan>
+        <tspan x="658" dy="18">External or unknown calls</tspan>
+        <tspan x="658" dy="18">require user approval</tspan>
+      </text>
+      <text x="265" y="306">Pass</text>
+      <text x="143" y="485">Mask detected values</text>
+      <text x="400" y="485">Build tool cards</text>
+      <text x="658" y="485">Resolve placeholders</text>
+      <text x="669" y="411" text-anchor="start">If permitted</text>
+      <text x="39" y="532" text-anchor="start">Repeat hit</text>
+      <text x="155" y="532" text-anchor="start">Stage error</text>
+      <text x="400" y="602">AES-256-GCM values</text>
+
+      <text x="278" y="665" text-anchor="start">Raw tool results and errors</text>
+      <text x="647" y="697" text-anchor="end">Restored tool arguments</text>
+      <text x="140" y="804">Documents, files, apps</text>
+      <text x="529" y="804">Act according to their own code and configuration</text>
+
+      <text x="470" y="882" text-anchor="start">Normal flow</text>
+      <text x="633" y="882" text-anchor="start">Potential path</text>
+      <text x="118" y="952">Document or email</text>
+      <text x="306" y="952">External tool call</text>
+      <text x="494" y="942"><tspan x="494">Classify effect</tspan><tspan x="494" dy="18">Require approval</tspan></text>
+      <text x="682" y="942"><tspan x="682">Unsafe approval or</tspan><tspan x="682" dy="18">wrong effect class</tspan></text>
+      <text x="34" y="1056" text-anchor="start">
+        <tspan x="34">Direct chat text bypasses Cloakroom.</tspan>
+        <tspan x="34" dy="18">Malicious servers can act independently.</tspan>
+        <tspan x="34" dy="18">Machine compromise can expose data and controls.</tspan>
+      </text>
+      <text x="505" y="1056" text-anchor="start">
+        <tspan x="505">Missed sensitive values and</tspan>
+        <tspan x="505" dy="18">identifying context can still</tspan>
+        <tspan x="505" dy="18">reach the host.</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
