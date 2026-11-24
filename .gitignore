@@ -5,14 +5,21 @@
 __pycache__/
 *.py[cod]
 *.egg-info/
+*.egg
 build/
 dist/
+.tox/
+.nox/
+.hypothesis/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+
+# Test coverage
 .coverage
 .coverage.*
 coverage.xml
+coverage.json
 htmlcov/
 
 # Local configuration and secrets
@@ -31,6 +38,11 @@ credentials/
 *.pfx
 *.p12
 *.vcf
+*.secret
+*.token
+*.jks
+*.keystore
+*.kdbx
 
 # Local state, logs and data
 *.db
@@ -44,3 +56,13 @@ logs/
 runtime/
 /data/*
 !/data/synthetic/
+
+# Runtime artifacts
+*.pid
+*.sock
+
+# IDE and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
