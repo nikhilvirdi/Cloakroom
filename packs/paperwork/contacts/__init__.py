@@ -1,0 +1,1 @@
+"""Contacts MCP server package."""

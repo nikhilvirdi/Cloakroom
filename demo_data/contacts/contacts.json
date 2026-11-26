@@ -1,0 +1,39 @@
+{
+  "contacts": [
+    {
+      "name": "Aarav Sharma",
+      "aliases": ["Aarav", "A. Sharma"],
+      "email": "aarav.sharma@example.com",
+      "phone": "+91-98765-43210",
+      "type": "self"
+    },
+    {
+      "name": "Lakeview Hospital Billing",
+      "email": "billing@lakeview.example",
+      "phone": "+91-11-4567-8900",
+      "type": "service_provider",
+      "category": "healthcare"
+    },
+    {
+      "name": "Priya Mehta",
+      "email": "priya.mehta@example.com",
+      "phone": "+91-98765-11111",
+      "type": "personal",
+      "relation": "friend"
+    },
+    {
+      "name": "Tech Corp HR",
+      "email": "hr@techcorp.example",
+      "phone": "+91-80-2234-5678",
+      "type": "work",
+      "category": "employer"
+    },
+    {
+      "name": "City Insurance Support",
+      "email": "support@cityinsurance.example",
+      "phone": "1800-123-4567",
+      "type": "service_provider",
+      "category": "insurance"
+    }
+  ]
+}
