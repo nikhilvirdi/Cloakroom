@@ -1,0 +1,31 @@
+servers:
+  documents:
+    command: python
+    args: ["-m", "packs.paperwork.documents.server"]
+    env:
+      DOCUMENTS_DIR: "demo_data/documents"
+  bank:
+    command: python
+    args: ["-m", "packs.paperwork.bank.server"]
+    env:
+      BANK_DATA_DIR: "demo_data/bank"
+  contacts:
+    command: python
+    args: ["-m", "packs.paperwork.contacts.server"]
+    env:
+      CONTACTS_FILE: "demo_data/contacts/contacts.json"
+  mail_drafts:
+    command: python
+    args: ["-m", "packs.paperwork.mail_drafts.server"]
+    env:
+      DRAFTS_DIR: "demo_data/mail/drafts"
+      OUTBOX_DIR: "demo_data/mail/outbox"
+  notes:
+    command: python
+    args: ["-m", "packs.paperwork.notes.server"]
+    env:
+      NOTES_DIR: "demo_data/notes"
+
+relations:
+  mail_drafts.create_draft: [contacts.lookup_email]
+  mail_drafts.send_draft: [contacts.lookup_email]

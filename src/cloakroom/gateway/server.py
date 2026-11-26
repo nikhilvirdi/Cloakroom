@@ -169,11 +169,15 @@ class GatewayServer:
             if tool_info is None:
                 raise ValueError(f"Tool not found: {tool_id}")
 
-            effect = classify_effect(
-                tool_id=tool_id,
-                annotations=None,  # Will be from tool_info when available
-                config_overrides=self._effect_overrides,
-            )
+            # Use effect from catalog if available, otherwise classify
+            if "effect" in tool_info and tool_info["effect"]:
+                effect = EffectClass(tool_info["effect"])
+            else:
+                effect = classify_effect(
+                    tool_id=tool_id,
+                    annotations=None,
+                    config_overrides=self._effect_overrides,
+                )
 
             # Step 3: Check if approval required (EXTERNAL or UNKNOWN)
             if effect in [EffectClass.EXTERNAL, EffectClass.UNKNOWN]:
