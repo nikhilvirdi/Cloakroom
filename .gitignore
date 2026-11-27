@@ -60,6 +60,7 @@ runtime/
 # Runtime artifacts
 *.pid
 *.sock
+*.patch
 
 # IDE and operating system files
 .vscode/

@@ -104,16 +104,16 @@ class ApprovalStatus(StrEnum):
 
 @dataclass(frozen=True)
 class CloakedEntity:
-    placeholder: str          # e.g. "[PERSON_1]"
-    entity_type: str          # e.g. "PERSON", "MED_ID", "ACCT", "EMAIL"
-    tier: str                 # "identifier" | "contextual" | "analytical"
-    stage: str                # "field_policy" | "gazetteer" | "detector"
+    placeholder: str  # e.g. "[PERSON_1]"
+    entity_type: str  # e.g. "PERSON", "MED_ID", "ACCT", "EMAIL"
+    tier: str  # "identifier" | "contextual" | "analytical"
+    stage: str  # "field_policy" | "gazetteer" | "detector"
 
 
 @dataclass(frozen=True)
 class CloakResult:
-    cloaked_payload: Any      # Safe to send to cloud host
-    raw_payload: Any          # In-memory local original only — NEVER published to EventBus or persisted to audit; Control Room reconstructs from vault
+    cloaked_payload: Any  # Safe to send to cloud host
+    raw_payload: Any  # In-memory local original only — NEVER published to EventBus or persisted to audit; Control Room reconstructs from vault
     entities: list[CloakedEntity] = field(default_factory=list)
     tripwire_passed: bool = True
     withheld: bool = False
@@ -126,8 +126,12 @@ class RestoreResult:
     restored_arguments: dict[str, Any]
     used_placeholders: list[CloakedEntity]
     contains_identifier_tier: bool
-    blocked: bool = False                 # True when invented/unknown placeholders found — caller MUST NOT call downstream
-    unknown_placeholders: list[str] = []  # Token strings ONLY (e.g. "[PERSON_99]") — never real values
+    blocked: bool = (
+        False  # True when invented/unknown placeholders found — caller MUST NOT call downstream
+    )
+    unknown_placeholders: list[
+        str
+    ] = []  # Token strings ONLY (e.g. "[PERSON_99]") — never real values
 
 
 @dataclass(frozen=True)
@@ -146,7 +150,7 @@ class ApprovalRequest:
     payload_hash: str
     restored_arguments: dict[str, Any]
     cloaked_arguments: dict[str, Any]
-    risk_flags: list[str]     # e.g. ["UNKNOWN_RECIPIENT", "IDENTIFIER_EXPOSURE: ACCT_1"]
+    risk_flags: list[str]  # e.g. ["UNKNOWN_RECIPIENT", "IDENTIFIER_EXPOSURE: ACCT_1"]
     created_at: datetime
     status: ApprovalStatus = ApprovalStatus.PENDING
 
@@ -154,12 +158,14 @@ class ApprovalRequest:
 @dataclass(frozen=True)
 class GatewayEvent:
     event_id: str
-    event_type: str           # "discovery" | "tool_call" | "approval_requested" | "approval_resolved" | "error"
+    event_type: (
+        str  # "discovery" | "tool_call" | "approval_requested" | "approval_resolved" | "error"
+    )
     timestamp: datetime
     tool_id: str | None = None
     effect: EffectClass | None = None
-    cloud_view: Any = None    # Strictly cloaked data
-    local_view: Any = None    # Cloaked view + entity tokens; Control Room reconstructs raw values FROM THE VAULT on Reveal (token-gated), never stored on the event
+    cloud_view: Any = None  # Strictly cloaked data
+    local_view: Any = None  # Cloaked view + entity tokens; Control Room reconstructs raw values FROM THE VAULT on Reveal (token-gated), never stored on the event
     entities: list[CloakedEntity] = field(default_factory=list)
     latency_ms: float = 0.0
     tripwire_passed: bool = True
@@ -175,7 +181,9 @@ class CloakEngineProtocol(Protocol):
 
 
 class ApprovalResolverProtocol(Protocol):
-    async def resolve(self, approval_id: str, *, approved: bool, payload_hash: str) -> ApprovalRequest: ...
+    async def resolve(
+        self, approval_id: str, *, approved: bool, payload_hash: str
+    ) -> ApprovalRequest: ...
     def list_pending(self) -> list[ApprovalRequest]: ...
 
 
@@ -186,8 +194,10 @@ class EventBusProtocol(Protocol):
 
 class ControlRoomFactory(Protocol):
     """Dev A implements; Dev B calls exactly this signature from `cloakroom serve`."""
-    def __call__(self, *, event_bus: EventBusProtocol,
-                 approvals: ApprovalResolverProtocol, token: str) -> Any: ...
+
+    def __call__(
+        self, *, event_bus: EventBusProtocol, approvals: ApprovalResolverProtocol, token: str
+    ) -> Any: ...
 ```
 
 ---
